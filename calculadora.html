@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Arqueo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f8f8f8;
+    }
+    h1 {
+      font-size: 1.6em;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-size: 1em;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 25px;
+      padding: 12px;
+      font-size: 1em;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Arqueo</h1>
+
+  <label>Dinero fisico en la maquina (€):
+    <input type="number" placeholder="Suma todo el dinero de la maquina" id="dineroFisico" step="0.01">
+  </label>
+
+  <label>Traspaso al cajero (€):
+    <input type="number" placeholder="¿Tiene traspaso? ¿Cuanto?" id="traspaso" step="0.01">
+  </label>
+
+  <label>Arqueo (€):
+    <input type="number" placeholder="200€ Hopper 1€ | 220€ Hopper 1€ y 0,20€ | Ruletas 300€ | Fuera de salon 400€" id="dejado" step="0.01">
+  </label>
+
+  <label>Pagos manuales (€):
+    <input type="number" placeholder="¿Tiene pagos manuales? ¿Cuanta cantidad?" id="pagos" step="0.01">
+  </label>
+
+  <button onclick="calcularArqueo()">Calcular Arqueo</button>
+
+  <h2 id="resultado">Resultado: €0.00</h2>
+
+  <script>
+    function calcularArqueo() {
+      const dineroFisico = parseFloat(document.getElementById('dineroFisico').value) || 0;
+      const traspaso = parseFloat(document.getElementById('traspaso').value) || 0;
+      const dejado = parseFloat(document.getElementById('dejado').value) || 0;
+      const pagos = parseFloat(document.getElementById('pagos').value) || 0;
+
+      const arqueo = dineroFisico + traspaso - dejado - pagos;
+      document.getElementById('resultado').textContent = `Resultado: €${arqueo.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
