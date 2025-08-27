@@ -147,18 +147,17 @@
       const arqueo = dineroFisico + traspaso - dineroDejado - pagos;
 
       let resultado = document.getElementById('resultado');
-      resultado.textContent = "Resultado del arqueo: " + arqueo.toFixed(2) + " €";
       resultado.className = "resultado";
 
       if (arqueo > 0) {
         resultado.classList.add("sobra");
-        resultado.textContent += " → SOBRA dinero";
+        resultado.textContent = "SOBRA " + arqueo.toFixed(2) + " €";
       } else if (arqueo < 0) {
         resultado.classList.add("falta");
-        resultado.textContent += " → FALTA dinero";
+        resultado.textContent = "FALTA " + Math.abs(arqueo).toFixed(2) + " €";
       } else {
         resultado.classList.add("ok");
-        resultado.textContent += " → CUADRA perfectamente";
+        resultado.textContent = "CUADRA perfectamente (0 € de diferencia)";
       }
 
       // Comparación con Tecnausa
